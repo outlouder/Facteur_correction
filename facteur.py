@@ -6,6 +6,15 @@ from decimal import Decimal
 import os
 import os.path
     
+# Toolbox def
+
+def space_generator(str,num):
+    space = ""
+    for i in xrange(num-len(str)):
+        space = space + " "
+
+    return space
+
 
 # definition of list class
 class list():
@@ -67,7 +76,7 @@ class matos():
                 elif "cab" in self.name.lower():
                     self.Atten = 0 - self.Atten
                 
-                print self.name," :"+ self.Data[i][0]+"MHz"+"/"+self.Data[i][1]+"dB"," ",self.Data[i+1][0]+"MHz"+"/"+self.Data[i+1][1]+"dB"," Attenuation: ","%.1f" % self.Atten+"dB"      
+                print self.name+space_generator(self.name,32)+" :"+"%.3fMHz" % float(self.Data[i][0])+"/"+"%.1fdB"%float(self.Data[i][1])," ","%.2fMHz" % float(self.Data[i+1][0])+"/"+"%.1fdB"%float(self.Data[i+1][1])," Attenuation: ","%.1f" % self.Atten+"dB"      
             i += 1
            
 print "----- CHOIX SETUP ------"
@@ -102,7 +111,7 @@ if processchoice == 's' :
         Atten += simplelist[i].Atten
 
     print " "            
-    print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % Atten
+    print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
 
 elif processchoice == 'l':
     # Calculation of multiple frequency inside .lst files 
@@ -113,4 +122,4 @@ elif processchoice == 'l':
             simplelist[i].Calc_Atten(float(frequest))
             Atten += simplelist[i].Atten
         ll.write(frequest,Atten)
-        print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % Atten
+        print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
