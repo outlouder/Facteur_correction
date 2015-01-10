@@ -121,10 +121,13 @@ if processchoice == 's' :
 elif processchoice == 'l':
     # Calculation of multiple frequency inside .lst files 
     ll = list()
-    for frequest in ll.data:
-        Atten = 0
-        for i in xrange(len(simplelist)):
-            simplelist[i].Calc_Atten(float(frequest))
-            Atten += simplelist[i].Atten
-        ll.write(frequest,Atten)
-        print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
+    if ll.file_found == 1:
+        for frequest in ll.data:
+            Atten = 0
+            for i in xrange(len(simplelist)):
+                simplelist[i].Calc_Atten(float(frequest))
+                Atten += simplelist[i].Atten
+            ll.write(frequest,Atten)
+            print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
+    else:
+        print "No Lst file found in root directory"
