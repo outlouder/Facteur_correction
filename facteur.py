@@ -89,7 +89,7 @@ for f in files:
 processchoice = raw_input("list or single (l or s) :")
 
 if processchoice == 's' :
-# Calculation of single frequency
+    # Calculation of single frequency 
     frequest = raw_input("Frequency (MHz): ")
     print " "
     
@@ -101,7 +101,7 @@ if processchoice == 's' :
     print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % Atten
 
 elif processchoice == 'l':
-    
+    # Calculation of multiple frequency inside .lst files
     ll = list()
     for frequest in ll.data:
         Atten = 0
