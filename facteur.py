@@ -39,22 +39,27 @@ class matos():
             
 
 # Chargement des fichiers attenuation
-
+sdf
 print "----- CHOIX SETUP ------"
+setup_choice = []
+for root,dirs, files in os.walk("./Setup"):
+    for i,l in enumerate(dirs):
+        print "choix %d"%(i+1)," :",l
+        setup_choice.append(l)
 
-for root,dirs, files in os.walk(".")
-    print dirs
-
+print ""
+dirchoice = "./Setup/"+setup_choice[int(raw_input("choix :"))-1]+"/"
+print dirchoice
 print "------------------------"
 
 simplelist = []
 
 frequest = raw_input("Frequence a calculer: ")
 print " "
-files = [f for f in os.listdir('.') if os.path.isfile(f)]
+files =  os.listdir(dirchoice)
 for f in files:    
         if f[-3:] == "txt":
-            x = matos(f)    
+            x = matos(dirchoice+f)    
             simplelist.append(x)            
 Atten = 0
 
