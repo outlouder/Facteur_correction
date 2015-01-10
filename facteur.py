@@ -45,7 +45,6 @@ class list():
 	        self.fo.write(freq+';'+"%.1f" % att+'\n')
 
     def __exit__(self):
-        
         if self.file_found == 1:
 	        self.fo.close()
 
@@ -64,9 +63,6 @@ class matos():
             
         f.close()
         
-    def Find_type(self):
-        pass
-        
     def Calc_Atten(self,freq):
         i = 0
         for check in self.Data:
@@ -76,6 +72,7 @@ class matos():
                 
                 self.Atten = float(self.Data[i+1][1]) - float(self.pente)*(float(self.Data[i+1][0])-float(freq))  
                 
+                #Adaptation of ampli and cable attenuation sign
                 if "amp" in self.name.lower():
                     self.Atten = 0 - self.Atten
                 elif "cab" in self.name.lower():
