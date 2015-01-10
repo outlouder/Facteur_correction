@@ -8,11 +8,11 @@ import os.path
     
 # Toolbox def
 
+# methode whish permitts to generate space in order to align atten results layout
 def space_generator(str,num):
     space = ""
     for i in xrange(num-len(str)):
         space = space + " "
-
     return space
 
 
@@ -21,7 +21,7 @@ class list():
 
     def __init__(self):
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
-        
+        self.file_found = 0
         # issue cumulation of all files .lst data and Output filename => last file
         for f in files:    
             if f[-3:] == "lst":
@@ -34,15 +34,20 @@ class list():
                 fi.close()
                 del self.data[0]
                 del self.data[0]
+                self.file_found = 1
         
-        self.filename = self.f[:-3]+"csv"
-        self.fo = open(self.filename,'wb')
+        if self.file_found == 1:
+	        self.filename = self.f[:-3]+"csv"
+	        self.fo = open(self.filename,'wb')
                 
     def write(self,freq,att):
-        self.fo.write(freq+';'+"%.1f" % att+'\n')
+        if self.file_found == 1:
+	        self.fo.write(freq+';'+"%.1f" % att+'\n')
 
     def __exit__(self):
-        self.fo.close()
+        
+        if self.file_found == 1:
+	        self.fo.close()
 
 
 
