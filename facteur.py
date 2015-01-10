@@ -8,7 +8,7 @@ import os.path
     
 # Toolbox def
 
-# methode whish permitts to generate space in order to align atten results layout
+# methode whish permits to generate space in order to align atten results layout
 def space_generator(str,num):
     space = ""
     for i in xrange(num-len(str)):
@@ -81,7 +81,7 @@ class matos():
                 print self.name+space_generator(self.name,32)+" :"+"%.3fMHz" % float(self.Data[i][0])+"/"+"%.1fdB"%float(self.Data[i][1])," ","%.2fMHz" % float(self.Data[i+1][0])+"/"+"%.1fdB"%float(self.Data[i+1][1])," Attenuation: ","%.1f" % self.Atten+"dB"      
             i += 1
            
-print "----- CHOIX SETUP ------"
+print "----- SETUP CHOICE------"
 
 setup_choice = []
 for root,dirs, files in os.walk("./Setup"):
@@ -113,7 +113,7 @@ if processchoice == 's' :
         Atten += simplelist[i].Atten
 
     print " "            
-    print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
+    print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
 
 elif processchoice == 'l':
     # Calculation of multiple frequency inside .lst files 
@@ -125,6 +125,6 @@ elif processchoice == 'l':
                 simplelist[i].Calc_Atten(float(frequest))
                 Atten += simplelist[i].Atten
             ll.write(frequest,Atten)
-            print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % float(Atten)
+            print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
     else:
         print "No Lst file found in root directory"
