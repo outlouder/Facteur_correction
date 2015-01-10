@@ -1,0 +1,17 @@
+Finaux Manuel (15)
+Fréquence (MHz)	SB	Niveau (dBµV/m)	Angle (°)	Commentaires
+30.697	1	29.82	247.6	Verticale
+86.083	1	39.35	247.6	Verticale
+87.647	1	38.53	247.6	Verticale
+98.476	1	40.26	247.6	Verticale
+108.795	1	38.15	227.3	Verticale
+141.197	1	35.27	247.6	Verticale
+216	2	28.36	313.9	Verticale
+246.88	2	31.52	273.8	Verticale
+339.4	2	37.87	0	Verticale
+370.2	2	34.12	334	Verticale
+462.92	2	33.23	357.1	Verticale
+524.56	2	31.29	293.9	Verticale
+555.44	2	30.45	313.9	Verticale
+800	3	33.82	2.5	Verticale
+956.36	3	33.06	0	Verticale
