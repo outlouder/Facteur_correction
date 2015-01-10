@@ -6,11 +6,13 @@ from decimal import Decimal
 import os
 import os.path
     
+# definition of list class
 class list():
 
     def __init__(self):
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
         
+        # issue cumulation of all files .lst data and Output filename => last file
         for f in files:    
             if f[-3:] == "lst":
                 self.f = f
@@ -26,7 +28,6 @@ class list():
         self.filename = self.f[:-3]+"csv"
         self.fo = open(self.filename,'wb')
                 
-
     def write(self,freq,att):
         self.fo.write(freq+';'+"%.1f" % att+'\n')
 
@@ -43,9 +44,8 @@ class matos():
             
         for row in reader:
             self.Data.append([row[0],row[1]])
-            #print row[0],row[1]		
-        f.close()        
-        #print self.Data
+            
+        f.close()
         
     def Find_type(self):
         pass
@@ -65,10 +65,9 @@ class matos():
                 
                 print self.name," :"+ self.Data[i][0],"MHz"+"/ "+self.Data[i][1],"dB"," ",self.Data[i+1][0],"MHz"+"/ "+self.Data[i+1][1],"dB"," Attenuation: ","%.1f" % self.Atten+"dB"      
             i += 1
-            
-
-# Chargement des fichiers attenuation
+           
 print "----- CHOIX SETUP ------"
+
 setup_choice = []
 for root,dirs, files in os.walk("./Setup"):
     for i,l in enumerate(dirs):
@@ -77,7 +76,6 @@ for root,dirs, files in os.walk("./Setup"):
 
 print ""
 dirchoice = "./Setup/"+setup_choice[int(raw_input("choix :"))-1]+"/"
-print dirchoice
 print "------------------------"
 
 simplelist = []
@@ -91,12 +89,10 @@ for f in files:
 processchoice = raw_input("list or single (l or s) :")
 
 if processchoice == 's' :
-
-    frequest = raw_input("Frequence a calculer: ")
+# Calculation of single frequency
+    frequest = raw_input("Frequency (MHz): ")
     print " "
     
-
-    # Calculer l'Attenuation totale à la fréquence demandée
     for i in xrange(len(simplelist)):
         simplelist[i].Calc_Atten(float(frequest))
         Atten += simplelist[i].Atten
