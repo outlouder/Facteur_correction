@@ -101,7 +101,7 @@ if processchoice == 's' :
     print "l'attenuation a " + "%.3fMHz " % float(frequest) + "est de " + "%.1fdB" % Atten
 
 elif processchoice == 'l':
-    # Calculation of multiple frequency inside .lst files
+    # Calculation of multiple frequency inside .lst files 
     ll = list()
     for frequest in ll.data:
         Atten = 0
