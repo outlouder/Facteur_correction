@@ -39,7 +39,6 @@ class matos():
             
 
 # Chargement des fichiers attenuation
-sdf
 print "----- CHOIX SETUP ------"
 setup_choice = []
 for root,dirs, files in os.walk("./Setup"):
