@@ -6,6 +6,7 @@ from decimal import Decimal
 import os
 import os.path
     
+
 # definition of list class
 class list():
 
@@ -34,6 +35,8 @@ class list():
     def __exit__(self):
         self.fo.close()
 
+
+
 class matos():
     
     def __init__(self,filename):
@@ -58,12 +61,13 @@ class matos():
                 self.pente = (float(self.Data[i+1][1]) - float(self.Data[i][1])) / (float(self.Data[i+1][0])-float(self.Data[i][0]))
                 
                 self.Atten = float(self.Data[i+1][1]) - float(self.pente)*(float(self.Data[i+1][0])-float(freq))  
+                
                 if "amp" in self.name.lower():
                     self.Atten = 0 - self.Atten
                 elif "cab" in self.name.lower():
                     self.Atten = 0 - self.Atten
                 
-                print self.name," :"+ self.Data[i][0],"MHz"+"/ "+self.Data[i][1],"dB"," ",self.Data[i+1][0],"MHz"+"/ "+self.Data[i+1][1],"dB"," Attenuation: ","%.1f" % self.Atten+"dB"      
+                print self.name," :"+ self.Data[i][0]+"MHz"+"/"+self.Data[i][1]+"dB"," ",self.Data[i+1][0]+"MHz"+"/"+self.Data[i+1][1]+"dB"," Attenuation: ","%.1f" % self.Atten+"dB"      
             i += 1
            
 print "----- CHOIX SETUP ------"
