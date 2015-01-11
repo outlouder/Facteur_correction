@@ -59,10 +59,10 @@ class matos():
         reader = csv.reader(f, delimiter='\t')
             
         for row in reader:
-            self.Data.append([row[0],row[1]])
-            
+            self.Data.append([row[0],row[1]])   
         f.close()
-        
+      
+    #Method whish calculate attenuation from Atten file loaded in __ini__ methode    
     def Calc_Atten(self,freq):
         i = 0
         for check in self.Data:
@@ -80,9 +80,9 @@ class matos():
                 
                 print self.name+space_generator(self.name,32)+" :"+"%.3fMHz" % float(self.Data[i][0])+"/"+"%.1fdB"%float(self.Data[i][1])," ","%.2fMHz" % float(self.Data[i+1][0])+"/"+"%.1fdB"%float(self.Data[i+1][1])," Attenuation: ","%.1f" % self.Atten+"dB"      
             i += 1
-           
+ 
+#Menu selection whish allow setup batch files from ./Setup directory          
 print "----- SETUP CHOICE------"
-
 setup_choice = []
 for root,dirs, files in os.walk("./Setup"):
     for i,l in enumerate(dirs):
@@ -93,6 +93,7 @@ print ""
 dirchoice = "./Setup/"+setup_choice[int(raw_input("choix :"))-1]+"/"
 print "------------------------"
 
+#Generate List of device object list from batch file
 simplelist = []
 files =  os.listdir(dirchoice)
 for f in files:    
