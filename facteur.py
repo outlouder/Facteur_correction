@@ -19,9 +19,9 @@ def space_generator(str,num):
 # definition of list class
 class list():
 
-    def __init__(self):
+    def __init__(self,simplelist):
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
-        self.file_found = 0
+       
         # issue cumulation of all files .lst data and Output filename => last file
         for f in files:    
             if f[-3:] == "lst":
@@ -32,21 +32,31 @@ class list():
                 for row in g:
                     self.data.append(row[0])
                 fi.close()
+
                 del self.data[0]
                 del self.data[0]
-                self.file_found = 1
-        
-        if self.file_found == 1:
-	        self.filename = self.f[:-3]+"csv"
-	        self.fo = open(self.filename,'wb')
+
+                self.filename = self.f[:-3]+"csv"
+                fo = open(self.filename,'wb')
+
+                for frequest in self.data:
+                    Atten = 0
+                    for i in xrange(len(simplelist)):
+                        simplelist[i].Calc_Atten(float(frequest))
+                        Atten += simplelist[i].Atten
+                    fo.write(frequest+';'+"%.1f" % Atten+'\n')
+                    
+                    print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
+
+                fo.close()
+
+	        
                 
     def write(self,freq,att):
-        if self.file_found == 1:
-	        self.fo.write(freq+';'+"%.1f" % att+'\n')
+        pass
 
     def __exit__(self):
-        if self.file_found == 1:
-	        self.fo.close()
+        pass
 
 
 
@@ -54,6 +64,7 @@ class matos():
     
     def __init__(self,filename):
         self.Data = []
+        self.simplelist = []
         self.name = filename
         f=open(filename, 'rb')
         reader = csv.reader(f, delimiter='\t')
@@ -116,15 +127,9 @@ if processchoice == 's' :
     print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
 
 elif processchoice == 'l':
-    # Calculation of multiple frequency inside .lst files 
-    ll = list()
-    if ll.file_found == 1:
-        for frequest in ll.data:
-            Atten = 0
-            for i in xrange(len(simplelist)):
-                simplelist[i].Calc_Atten(float(frequest))
-                Atten += simplelist[i].Atten
-            ll.write(frequest,Atten)
-            print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
-    else:
-        print "No Lst file found in root directory"
+    # Calculation of multiple frequency inside .lst files
+    warning1 = raw_input("WARNING : setup choisen will be applied on All lst Files in root directory")
+    ll = list(simplelist)
+
+
+
