@@ -127,6 +127,3 @@ elif processchoice == 'l':
     # Calculation of multiple frequency inside .lst files
     warning1 = raw_input("WARNING : setup choisen will be applied on All lst Files in root directory")
     ll = list(simplelist)
-
-
-
