@@ -6,17 +6,16 @@ from decimal import Decimal
 import os
 import os.path
     
-# Toolbox def
+# Toolbox Definition
 
-# methode whish permits to generate space in order to align atten results layout
+# Methode whish permits to generate space in order to align atten results layout
 def space_generator(str,num):
     space = ""
     for i in xrange(num-len(str)):
         space = space + " "
     return space
 
-
-# definition of list class
+# definition of frequency list class
 class list():
 
     def __init__(self,simplelist):
@@ -49,9 +48,7 @@ class list():
                     print "attenuation at " + "%.3fMHz " % float(frequest) + "is " + "%.1fdB" % float(Atten)
 
                 fo.close()
-
-	        
-                
+          
     def write(self,freq,att):
         pass
 
@@ -67,8 +64,7 @@ class matos():
         self.simplelist = []
         self.name = filename
         f=open(filename, 'rb')
-        reader = csv.reader(f, delimiter='\t')
-            
+        reader = csv.reader(f, delimiter='\t')    
         for row in reader:
             self.Data.append([row[0],row[1]])   
         f.close()
