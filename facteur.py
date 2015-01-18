@@ -1,5 +1,5 @@
 ﻿# -*- coding: utf-8 -*-
-# Outlouder
+# coding by Outlouder
 
 import csv
 from decimal import Decimal
