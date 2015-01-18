@@ -1,5 +1,5 @@
 ﻿# -*- coding: utf-8 -*-
-# Outlouder
+# coding by Outlouder
 
 import csv
 from decimal import Decimal
@@ -20,9 +20,9 @@ def space_generator(str,num):
 class list():
 
     def __init__(self,simplelist):
+        
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
        
-        # issue cumulation of all files .lst data and Output filename => last file
         for f in files:    
             if f[-3:] == "lst":
                 self.f = f
